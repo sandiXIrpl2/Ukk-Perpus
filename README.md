@@ -1,4 +1,4 @@
-# 📚 Laravel Sistem Inventaris Barang
+# 📚 Laravel Sistem Perpustakaan Sekolah
 
 ## 🚀 Overview
 Projek ini dibuat berdasarkan judul project UKK "Perpustakaan Sekolah", dan ERD yang telah diberikan.
