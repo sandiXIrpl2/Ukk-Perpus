@@ -1,66 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Laravel Sistem Perpustakaan Sekolah
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🚀 Overview
+Projek ini dibuat berdasarkan judul project UKK "Perpustakaan Sekolah", dan ERD yang telah diberikan.
 
-## About Laravel
+Perpustakaan Laravel adalah aplikasi web yang dibangun dengan framework Laravel, dirancang untuk mengelola buku, anggota, transaksi peminjaman, dan lainnya. Aplikasi ini memiliki berbagai fitur seperti:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Pengelolaan rak buku, kategori buku, dan format buku.
+- Pengelolaan jenis anggota (Admin, Siswa) dengan pembatasan jumlah peminjaman.
+- Fitur peminjaman dan pengembalian buku untuk anggota.
+- Sistem denda untuk keterlambatan dan kehilangan buku.
+- Menyediakan laporan transaksi peminjaman buku.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Features
+1. **Manajemen Rak Buku (tbl_rak)**
+   - Menambahkan, mengedit, dan menghapus rak buku.
+   - Menyimpan informasi tentang kode rak, nama rak, dan keterangan.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. **Manajemen DDC (tbl_ddc)**
+   - Menambahkan, mengedit, dan menghapus kategori DDC (Dewey Decimal Classification).
+   - Mengelola kode DDC, deskripsi, dan hubungan dengan rak buku.
 
-## Learning Laravel
+3. **Manajemen Format Buku (tbl_format)**
+   - Menambahkan, mengedit, dan menghapus format buku (misalnya: hardcover, paperback).
+   - Menyimpan informasi kode format dan keterangan.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4. **Manajemen Jenis Anggota (tbl_jenis_anggota)**
+   - Menambahkan, mengedit, dan menghapus jenis anggota (misalnya: Admin, Siswa).
+   - Mengelola kode jenis anggota, nama jenis, dan batasan peminjaman (jumlah maksimum peminjaman).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+5. **Manajemen Penerbit (tbl_penerbit)**
+   - Menambahkan, mengedit, dan menghapus penerbit buku.
+   - Mengelola kode penerbit, nama penerbit, alamat, nomor telepon, email, fax, website, dan kontak.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+6. **Manajemen Pengarang (tbl_pengarang)**
+   - Menambahkan, mengedit, dan menghapus pengarang buku.
+   - Menyimpan data pengarang termasuk gelar, nama, kontak, email, biografi, dan keterangan.
 
-## Laravel Sponsors
+7. **Manajemen Perpustakaan (tbl_perpustakaan)**
+   - Menambahkan, mengedit, dan menghapus informasi perpustakaan.
+   - Mengelola nama perpustakaan, pustakawan, alamat, email, website, nomor telepon, dan keterangan.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+8. **Manajemen Pustaka (tbl_pustaka)**
+   - Menambahkan, mengedit, dan menghapus buku yang ada di perpustakaan.
+   - Menyimpan data buku termasuk ISBN, judul, tahun terbit, pengarang, penerbit, kategori DDC, format, harga, kondisi buku, dan lainnya.
 
-### Premium Partners
+9. **Manajemen Anggota (tbl_anggota)**
+   - Menambahkan, mengedit, dan menghapus data anggota perpustakaan.
+   - Mengelola informasi anggota seperti kode anggota, nama, alamat, tanggal lahir, jenis anggota, username, password, dan foto.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+10. **Manajemen Transaksi Peminjaman (tbl_transaksi)**
+    - Menambahkan, mengedit, dan menghapus transaksi peminjaman buku.
+    - Mengelola data transaksi termasuk peminjam (anggota), buku yang dipinjam, tanggal pinjam, tanggal kembali, dan denda.
 
-## Contributing
+11. **Laporan Transaksi Peminjaman**
+    - Melihat laporan transaksi peminjaman dan pengembalian buku.
+    - Menampilkan status peminjaman, buku yang terlambat, dan denda yang dikenakan.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+12. **Denda Peminjaman dan Kehilangan Buku**
+    - Menentukan denda keterlambatan pengembalian buku.
+    - Menentukan denda untuk buku yang hilang atau rusak.
 
-## Code of Conduct
+Setiap fitur ini memberikan kontrol penuh terhadap manajemen data perpustakaan, mulai dari rak buku hingga transaksi peminjaman dan pengembalian, dengan pengelolaan yang efisien dan mudah.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📋 Prerequisites
+Ensure you have the following installed on your system:
 
-## Security Vulnerabilities
+- **PHP 8.2+**
+- **Composer**
+- **Laravel 11**
+- **MySQL**
+- **Node.js & npm**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🔧 Installation
+Follow these steps to set up the project locally:
 
-## License
+### 1️⃣ Clone the Repository
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+git clone https://github.com/AxelMardiyo/UKK-Perpustakaan-Sekolah.git
+```   
+Move into the project directory:
+    
+```bash
+cd UKK-Perpustakaan-Sekolah
+```
+
+### 2️⃣ Install Backend Dependencies
+```bash
+composer install
+```
+
+### 3️⃣ Configure Environment Variables
+Duplicate the `.env.example` file and rename it to `.env`:
+```bash
+cp .env.example .env
+```
+Update the `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 4️⃣ Generate Application Key
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Migrate the Database
+```bash
+php artisan migrate
+```
+
+### 6️⃣ Compile Frontend Assets (Optional)
+If the project uses custom CSS or JavaScript:
+```bash
+npm install
+npm run dev
+```
+
+### 7️⃣ Start the Server
+Run the Laravel development server:
+```bash
+php artisan serve
+```
+Access the application at `http://127.0.0.1:8000`.
+
+## 🛡️ Default Admin Credentials
+```text
+Email: admin@gmail.com
+Password: password
+```
