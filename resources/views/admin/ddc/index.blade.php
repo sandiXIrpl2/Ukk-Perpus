@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('ddc.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah DDC Baru</a>
+        <a href="{{ route('admin.ddc.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah DDC Baru</a>
     </div>
 
     @if(session('success'))

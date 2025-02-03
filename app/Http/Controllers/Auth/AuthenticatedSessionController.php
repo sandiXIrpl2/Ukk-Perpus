@@ -26,27 +26,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $request->authenticate();
         
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $request->session()->regenerate();
 
-        $user = Anggota::whereEmail($request->email)->first();
-    // dd($user && Hash::check($request->password,$user->password));
-        if ($user && Hash::check($request->password,$user->password)) {
-
-            auth()->login($user);
-
-            
-            $request->session()->regenerate();
- 
-            return redirect()->intended('dashboard');
-        }
- 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return redirect()->intended('dashboard');
     }
 
     /**

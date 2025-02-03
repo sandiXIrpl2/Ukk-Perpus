@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('raks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Rak Baru</a>
+        <a href="{{ route('admin.raks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Rak Baru</a>
     </div>
 
     @if(session('success'))
@@ -29,12 +29,13 @@
                     <td class="border p-2">{{ $rak->rak }}</td>
                     <td class="border p-2">{{ $rak->keterangan }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('rak.edit', $rak->id_rak) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.raks.edit', $rak->id_rak) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('rak.destroy', $rak->id_rak) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.raks.destroy', $rak->id_rak) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>
+                            <button type="submit" class="text-red-500 hover:text-red-700" 
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus rak ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>

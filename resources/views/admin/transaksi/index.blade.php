@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('transaksi.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Transaksi</a>
+        <a href="{{ route('admin.transaksi.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Transaksi</a>
     </div>
 
     @if(session('success'))

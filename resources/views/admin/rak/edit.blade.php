@@ -3,7 +3,7 @@
 @section('header', 'Edit Rak')
 
 @section('content')
-    <form action="{{ route('rak.update', $rak->id_rak) }}" method="POST">
+    <form action="{{ route('admin.raks.update', $rak->id_rak) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-4">

@@ -3,7 +3,7 @@
 @section('header', 'Tambah Rak Baru')
 
 @section('content')
-    <form action="{{ route('rak.store') }}" method="POST">
+    <form action="{{ route('admin.raks.store') }}" method="POST">
         @csrf
         <div class="mb-4">
             <label for="kode_rak" class="block text-gray-700">Kode Rak</label>
@@ -22,4 +22,3 @@
         </div>
     </form>
 @endsection
-a

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('format.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Format Baru</a>
+        <a href="{{ route('admin.format.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Format Baru</a>
     </div>
 
     @if(session('success'))

@@ -3,7 +3,7 @@
 @section('header', 'Tambah Format Baru')
 
 @section('content')
-    <form action="{{ route('format.store') }}" method="POST">
+    <form action="{{ route('admin.format.store') }}" method="POST">
         @csrf
         <div class="mb-4">
             <label for="kode_format" class="block text-gray-700">Kode Format</label>

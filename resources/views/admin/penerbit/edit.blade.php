@@ -3,7 +3,7 @@
 @section('header', 'Edit Penerbit')
 
 @section('content')
-    <form action="{{ route('penerbit.update', $penerbit->id_penerbit) }}" method="POST">
+    <form action="{{ route('admin.penerbit.update', $penerbit->id_penerbit) }}" method="POST">
         @csrf
         @method('PUT')
 

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('jenis_anggota.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Jenis Anggota Baru</a>
+        <a href="{{ route('admin.jenis_anggota.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Jenis Anggota Baru</a>
     </div>
 
     @if(session('success'))

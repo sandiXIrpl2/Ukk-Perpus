@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('penerbit.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Penerbit Baru</a>
+        <a href="{{ route('admin.penerbit.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Penerbit Baru</a>
     </div>
 
     @if(session('success'))

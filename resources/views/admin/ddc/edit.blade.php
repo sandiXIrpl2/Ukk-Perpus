@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="font-semibold text-lg text-gray-800 mb-4">Edit DDC</h3>
 
-    <form action="{{ route('ddc.update', $ddc->id_ddc) }}" method="POST">
+    <form action="{{ route('admin.ddc.update', $ddc->id_ddc) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-4">

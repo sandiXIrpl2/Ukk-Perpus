@@ -3,7 +3,7 @@
 @section('header', 'Edit Transaksi')
 
 @section('content')
-    <form action="{{ route('transaksi.update', $transaksi->id_transaksi) }}" method="POST">
+    <form action="{{ route('admin.transaksi.update', $transaksi->id_transaksi) }}" method="POST">
         @csrf
         @method('PUT')
 

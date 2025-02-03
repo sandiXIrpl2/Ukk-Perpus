@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('pustaka.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali ke Daftar Pustaka</a>
+        <a href="{{ route('admin.pustaka.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali ke Daftar Pustaka</a>
     </div>
 
-    <form action="{{ route('pustaka.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.pustaka.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-4">

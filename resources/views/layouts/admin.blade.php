@@ -17,92 +17,103 @@
             <ul>
                 <!-- Dashboard Link -->
                 <li class="mb-4">
-                    <a href="{{ route('dashboard') }}" 
+                    <a href="{{ route('admin') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('dashboard') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Dashboard
                     </a>
                 </li>
 
                 <!-- Manajemen Rak -->
                 <li class="mb-4">
-                    <a href="{{ route('raks.index') }}" 
+                    <a href="{{ route('admin.raks.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('raks.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.raks.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Rak
                     </a>
                 </li>
 
                 <!-- Manajemen Ddc -->
                 <li class="mb-4">
-                    <a href="{{ route('ddc.index') }}" 
+                    <a href="{{ route('admin.ddc.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('ddc.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.ddc.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen DDC
                     </a>
                 </li>
 
                 <!-- Manajemen Format -->
                 <li class="mb-4">
-                    <a href="{{ route('format.index') }}" 
+                    <a href="{{ route('admin.format.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('format.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.format.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Format
                     </a>
                 </li>
 
                 <!-- Manajemen Penerbit -->
                 <li class="mb-4">
-                    <a href="{{ route('penerbit.index') }}" 
+                    <a href="{{ route('admin.penerbit.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('penerbit.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.penerbit.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Penerbit
                     </a>
                 </li>
 
                 <!-- Manajemen Pengarang -->
                 <li class="mb-4">
-                    <a href="{{ route('pengarang.index') }}" 
+                    <a href="{{ route('admin.pengarang.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('pengarang.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.pengarang.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Pengarang
                     </a>
                 </li>
 
                 <!-- Manajemen Jenis Anggota -->
                 <li class="mb-4">
-                    <a href="{{ route('jenis_anggota.index') }}" 
+                    <a href="{{ route('admin.jenis_anggota.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('jenis_anggota.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.jenis_anggota.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Jenis Anggota
                     </a>
                 </li>
 
                 <!-- Manajemen Pustaka -->
                 <li class="mb-4">
-                    <a href="{{ route('pustaka.index') }}" 
+                    <a href="{{ route('admin.pustaka.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('pustaka.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.pustaka.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Pustaka
                     </a>
                 </li>
 
                 <!-- Manajemen Anggota -->
                 <li class="mb-4">
-                    <a href="{{ route('anggota.index') }}" 
+                    <a href="{{ route('admin.anggota.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('anggota.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.anggota.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Anggota
                     </a>
                 </li>
 
                 <!-- Manajemen Transaksi -->
                 <li class="mb-4">
-                    <a href="{{ route('transaksi.index') }}" 
+                    <a href="{{ route('admin.transaksi.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('transaksi.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.transaksi.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Transaksi
                     </a>
+                </li>
+
+                <!-- Logout -->
+                <li class="mb-4">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" 
+                            class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md hover:bg-blue-500 w-full text-left">
+                            Logout
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

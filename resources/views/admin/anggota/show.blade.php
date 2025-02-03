@@ -150,8 +150,8 @@
         </div>
 
         <div class="flex space-x-4">
-            <a href="{{ route('anggota.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali</a>
-            <a href="{{ route('anggota.edit', $anggota->id_anggota) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Edit</a>
+            <a href="{{ route('admin.anggota.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali</a>
+            <a href="{{ route('admin.anggota.edit', $anggota->id_anggota) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Edit</a>
         </div>
     </div>
 @endsection

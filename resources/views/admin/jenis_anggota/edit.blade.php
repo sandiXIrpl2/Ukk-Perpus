@@ -3,7 +3,7 @@
 @section('header', 'Edit Jenis Anggota')
 
 @section('content')
-    <form action="{{ route('jenis_anggota.update', $jenisAnggota->id_jenis_anggota) }}" method="POST">
+    <form action="{{ route('admin.jenis_anggota.update', $jenisAnggota->id_jenis_anggota) }}" method="POST">
         @csrf
         @method('PUT')
 

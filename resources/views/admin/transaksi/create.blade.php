@@ -3,7 +3,7 @@
 @section('header', 'Tambah Transaksi')
 
 @section('content')
-    <form action="{{ route('transaksi.store') }}" method="POST">
+    <form action="{{ route('admin.transaksi.store') }}" method="POST">
         @csrf
 
         <div class="mb-4">

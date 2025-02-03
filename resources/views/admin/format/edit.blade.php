@@ -3,7 +3,7 @@
 @section('header', 'Edit Format')
 
 @section('content')
-    <form action="{{ route('format.update', $format->id_format) }}" method="POST">
+    <form action="{{ route('admin.format.update', $format->id_format) }}" method="POST">
         @csrf
         @method('PUT')
 

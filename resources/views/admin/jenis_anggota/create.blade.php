@@ -3,7 +3,7 @@
 @section('header', 'Tambah Jenis Anggota Baru')
 
 @section('content')
-    <form action="{{ route('jenis_anggota.store') }}" method="POST">
+    <form action="{{ route('admin.jenis_anggota.store') }}" method="POST">
         @csrf
 
         <div class="mb-4">

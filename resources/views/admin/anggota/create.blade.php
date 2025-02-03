@@ -3,7 +3,7 @@
 @section('header', 'Tambah Anggota Baru')
 
 @section('content')
-    <form action="{{ route('anggota.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.anggota.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- Kode Anggota -->

@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="font-semibold text-lg text-gray-800 mb-4">Tambah DDC</h3>
 
-    <form action="{{ route('ddc.store') }}" method="POST">
+    <form action="{{ route('admin.ddc.store') }}" method="POST">
         @csrf
         <div class="mb-4">
             <label for="kode_ddc" class="block text-gray-700">Kode DDC</label>

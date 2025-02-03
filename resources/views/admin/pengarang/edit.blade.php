@@ -3,7 +3,7 @@
 @section('header', 'Edit Pengarang')
 
 @section('content')
-    <form action="{{ route('pengarang.update', $pengarang->id_pengarang) }}" method="POST">
+    <form action="{{ route('admin.pengarang.update', $pengarang->id_pengarang) }}" method="POST">
         @csrf
         @method('PUT')
 

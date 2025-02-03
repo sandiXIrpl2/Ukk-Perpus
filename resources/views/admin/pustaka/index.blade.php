@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('pustaka.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Pustaka Baru</a>
+        <a href="{{ route('admin.pustaka.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Pustaka Baru</a>
     </div>
 
     @if(session('success'))

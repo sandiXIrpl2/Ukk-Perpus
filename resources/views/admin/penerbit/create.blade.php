@@ -3,7 +3,7 @@
 @section('header', 'Tambah Penerbit Baru')
 
 @section('content')
-    <form action="{{ route('penerbit.store') }}" method="POST">
+    <form action="{{ route('admin.penerbit.store') }}" method="POST">
         @csrf
 
         <div class="mb-4">
