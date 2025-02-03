@@ -16,13 +16,12 @@
             <ul class="space-y-2 px-4 py-6">
                 <li><a href="{{ route('dashboard') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Dashboard</a></li>
                 <li><a href="{{ route('profile.edit') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Profile</a></li>
-                <li><a href="{{ route('rak.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Rak</a></li>
+                <li><a href="{{ route('raks.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Rak</a></li>
                 <li><a href="{{ route('ddc.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">DDC</a></li>
                 <li><a href="{{ route('format.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Format</a></li>
                 <li><a href="{{ route('jenis_anggota.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Jenis Anggota</a></li>
                 <li><a href="{{ route('penerbit.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Penerbit</a></li>
                 <li><a href="{{ route('pengarang.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Pengarang</a></li>
-                <li><a href="{{ route('perpustakaan.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Perpustakaan</a></li>
                 <li><a href="{{ route('pustaka.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Pustaka</a></li>
                 <li><a href="{{ route('anggota.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Anggota</a></li>
                 <li><a href="{{ route('transaksi.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Transaksi</a></li>

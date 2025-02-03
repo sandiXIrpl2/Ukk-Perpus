@@ -1,23 +1,19 @@
 <?php
+
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
-class DatabaseSeeder extends Seeder
+class CreateUsersSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
+     *
+     * @return void
      */
     public function run(): void
     {
-        // Menambahkan pengguna menggunakan factory
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-        // Menambahkan pengguna lain dengan firstOrCreate untuk menghindari duplikasi
         $users = [
             [
                 'name' => 'Admin',
@@ -36,10 +32,15 @@ class DatabaseSeeder extends Seeder
                 'email' => 'user@itsolutionstuff.com',
                 'type' => 0,
                 'password' => bcrypt('123456'),
+                [
+                    'name' => 'Admin',
+                    'email' => 'admin1@gmail.com',
+                    'type' => 1,
+                    'password' => bcrypt('12345678'),
+                ],
             ],
         ];
 
-        // Menggunakan firstOrCreate untuk mencegah duplikasi
         foreach ($users as $user) {
             User::firstOrCreate(
                 ['email' => $user['email']], // Cek berdasarkan email

@@ -26,9 +26,9 @@
 
                 <!-- Manajemen Rak -->
                 <li class="mb-4">
-                    <a href="{{ route('rak.index') }}" 
+                    <a href="{{ route('raks.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('rak.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('raks.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen Rak
                     </a>
                 </li>
@@ -37,7 +37,7 @@
                 <li class="mb-4">
                     <a href="{{ route('ddc.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('ddc.index') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('ddc.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Manajemen DDC
                     </a>
                 </li>

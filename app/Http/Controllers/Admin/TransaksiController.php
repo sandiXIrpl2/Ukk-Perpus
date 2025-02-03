@@ -14,6 +14,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksis = Transaksi::with('pustaka', 'anggota')->get();
+        // dd($transaksis);
         return view('admin.transaksi.index', compact('transaksis'));
     }
 

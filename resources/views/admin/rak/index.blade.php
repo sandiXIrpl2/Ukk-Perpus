@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('rak.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Rak Baru</a>
+        <a href="{{ route('raks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Rak Baru</a>
     </div>
 
     @if(session('success'))

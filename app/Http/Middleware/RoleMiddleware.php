@@ -17,14 +17,15 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, $role): Response
     {
         $user = Auth::user();
+        // dd($user);
         
-        if ($role == 'admin' && $user->id_jenis_anggota != 1) {
+        if ($role == 'admin' && $user->username != 'admin') {
             return redirect('/'); // Arahkan ke halaman lain jika bukan admin
         }
 
-        if ($role == 'siswa' && $user->id_jenis_anggota != 2) {
-            return redirect('/'); // Arahkan ke halaman lain jika bukan siswa
-        }
+        // if ($role == 'siswa' && $user->id_jenis_anggota != 2) {
+        //     return redirect('/'); // Arahkan ke halaman lain jika bukan siswa
+        // }
 
         return $next($request);
     }
