@@ -35,11 +35,11 @@
                     <td class="border p-2">{{ $pustaka->kondisi_buku }}</td>
                     <td class="border p-2">{{ number_format($pustaka->harga_buku, 0, ',', '.') }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('pustaka.edit', $pustaka->id_pustaka) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.pustaka.edit', $pustaka->id_pustaka) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <a href="{{ route('pustaka.show', $pustaka->id_pustaka) }}" class="text-blue-500 hover:text-blue-700">Lihat</a>
+                        <a href="{{ route('admin.pustaka.show', $pustaka->id_pustaka) }}" class="text-blue-500 hover:text-blue-700">Lihat</a>
                         |
-                        <form action="{{ route('pustaka.destroy', $pustaka->id_pustaka) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.pustaka.destroy', $pustaka->id_pustaka) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

@@ -36,7 +36,7 @@ class PengarangController extends Controller
 
         Pengarang::create($request->all());
 
-        return redirect()->route('pengarang.index')->with('success', 'Pengarang berhasil ditambahkan.');
+        return redirect()->route('admin.pengarang.index')->with('success', 'Pengarang berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit pengarang
@@ -62,7 +62,7 @@ class PengarangController extends Controller
         $pengarang = Pengarang::findOrFail($id_pengarang);
         $pengarang->update($request->all());
 
-        return redirect()->route('pengarang.index')->with('success', 'Pengarang berhasil diperbarui.');
+        return redirect()->route('admin.pengarang.index')->with('success', 'Pengarang berhasil diperbarui.');
     }
 
     // Menghapus pengarang
@@ -71,7 +71,7 @@ class PengarangController extends Controller
         $pengarang = Pengarang::findOrFail($id_pengarang);
         $pengarang->delete();
 
-        return redirect()->route('pengarang.index')->with('success', 'Pengarang berhasil dihapus.');
+        return redirect()->route('admin.pengarang.index')->with('success', 'Pengarang berhasil dihapus.');
     }
 }
 

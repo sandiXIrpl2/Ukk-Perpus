@@ -37,7 +37,7 @@ class PenerbitController extends Controller
 
         Penerbit::create($request->all());
 
-        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil ditambahkan.');
+        return redirect()->route('admin.penerbit.index')->with('success', 'Penerbit berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit penerbit
@@ -64,7 +64,7 @@ class PenerbitController extends Controller
         $penerbit = Penerbit::findOrFail($id_penerbit);
         $penerbit->update($request->all());
 
-        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil diperbarui.');
+        return redirect()->route('admin.penerbit.index')->with('success', 'Penerbit berhasil diperbarui.');
     }
 
     // Menghapus penerbit
@@ -73,6 +73,6 @@ class PenerbitController extends Controller
         $penerbit = Penerbit::findOrFail($id_penerbit);
         $penerbit->delete();
 
-        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil dihapus.');
+        return redirect()->route('admin.penerbit.index')->with('success', 'Penerbit berhasil dihapus.');
     }
 }

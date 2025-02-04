@@ -31,9 +31,9 @@
                     <td class="border p-2">{{ $pengarang->no_telp }}</td>
                     <td class="border p-2">{{ $pengarang->email }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('pengarang.edit', $pengarang->id_pengarang) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.pengarang.edit', $pengarang->id_pengarang) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('pengarang.destroy', $pengarang->id_pengarang) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.pengarang.destroy', $pengarang->id_pengarang) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

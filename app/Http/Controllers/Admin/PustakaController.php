@@ -62,7 +62,7 @@ class PustakaController extends Controller
 
         Pustaka::create($validatedData);
 
-        return redirect()->route('pustaka.index')->with('success', 'Pustaka berhasil ditambahkan.');
+        return redirect()->route('admin.pustaka.index')->with('success', 'Pustaka berhasil ditambahkan.');
     }
 
     // Tampilkan detail pustaka
@@ -118,7 +118,7 @@ class PustakaController extends Controller
 
         $pustaka->update($validatedData);
 
-        return redirect()->route('pustaka.index')->with('success', 'Pustaka berhasil diperbarui.');
+        return redirect()->route('admin.pustaka.index')->with('success', 'Pustaka berhasil diperbarui.');
     }
 
     // Hapus pustaka dari database
@@ -133,7 +133,7 @@ class PustakaController extends Controller
 
         $pustaka->delete();
 
-        return redirect()->route('pustaka.index')->with('success', 'Pustaka berhasil dihapus.');
+        return redirect()->route('admin.pustaka.index')->with('success', 'Pustaka berhasil dihapus.');
     }
 }
 

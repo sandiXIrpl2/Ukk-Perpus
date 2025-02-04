@@ -33,7 +33,7 @@ class JenisAnggotaController extends Controller
 
         JenisAnggota::create($request->all());
 
-        return redirect()->route('jenis_anggota.index')->with('success', 'Jenis Anggota berhasil ditambahkan.');
+        return redirect()->route('admin.jenis_anggota.index')->with('success', 'Jenis Anggota berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit jenis anggota
@@ -56,7 +56,7 @@ class JenisAnggotaController extends Controller
         $jenisAnggota = JenisAnggota::findOrFail($id_jenis_anggota);
         $jenisAnggota->update($request->all());
 
-        return redirect()->route('jenis_anggota.index')->with('success', 'Jenis Anggota berhasil diperbarui.');
+        return redirect()->route('admin.jenis_anggota.index')->with('success', 'Jenis Anggota berhasil diperbarui.');
     }
 
     // Menghapus jenis anggota
@@ -65,7 +65,7 @@ class JenisAnggotaController extends Controller
         $jenisAnggota = JenisAnggota::findOrFail($id_jenis_anggota);
         $jenisAnggota->delete();
 
-        return redirect()->route('jenis_anggota.index')->with('success', 'Jenis Anggota berhasil dihapus.');
+        return redirect()->route('admin.jenis_anggota.index')->with('success', 'Jenis Anggota berhasil dihapus.');
     }
 }
 

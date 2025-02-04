@@ -7,7 +7,7 @@
         <a href="{{ route('admin.pustaka.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali ke Daftar Pustaka</a>
     </div>
 
-    <form action="{{ route('pustaka.update', $pustaka->id_pustaka) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.pustaka.update', $pustaka->id_pustaka) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

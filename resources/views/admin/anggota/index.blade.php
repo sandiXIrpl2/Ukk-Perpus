@@ -29,11 +29,11 @@
                     <td class="border p-2">{{ $anggota->nama_anggota }}</td>
                     <td class="border p-2">{{ $anggota->jenisAnggota->jenis_anggota }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('anggota.edit', $anggota->id_anggota) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.anggota.edit', $anggota->id_anggota) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <a href="{{ route('anggota.show', $anggota->id_anggota) }}" class="text-blue-500 hover:text-blue-700">Detail</a>
+                        <a href="{{ route('admin.anggota.show', $anggota->id_anggota) }}" class="text-blue-500 hover:text-blue-700">Detail</a>
                         |
-                        <form action="{{ route('anggota.destroy', $anggota->id_anggota) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.anggota.destroy', $anggota->id_anggota) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

@@ -33,9 +33,9 @@
                     <td class="border p-2">{{ $penerbit->no_telp }}</td>
                     <td class="border p-2">{{ $penerbit->email }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('penerbit.edit', $penerbit->id_penerbit) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.penerbit.edit', $penerbit->id_penerbit) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('penerbit.destroy', $penerbit->id_penerbit) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.penerbit.destroy', $penerbit->id_penerbit) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

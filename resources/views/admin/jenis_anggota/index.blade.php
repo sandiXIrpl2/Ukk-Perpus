@@ -31,9 +31,9 @@
                     <td class="border p-2">{{ $jenisAnggota->max_pinjam }}</td>
                     <td class="border p-2">{{ $jenisAnggota->keterangan }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('jenis_anggota.edit', $jenisAnggota->id_jenis_anggota) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.jenis_anggota.edit', $jenisAnggota->id_jenis_anggota) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('jenis_anggota.destroy', $jenisAnggota->id_jenis_anggota) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.jenis_anggota.destroy', $jenisAnggota->id_jenis_anggota) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

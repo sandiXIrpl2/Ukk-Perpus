@@ -37,9 +37,9 @@
                     <td class="border p-2">{{ $transaksi->tgl_pengembalian }}</td>
                     <td class="border p-2">{{ $transaksi->fp == '0' ? 'Dipinjam' : 'Selesai' }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('transaksi.edit', $transaksi->id_transaksi) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.transaksi.edit', $transaksi->id_transaksi) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('transaksi.destroy', $transaksi->id_transaksi) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.transaksi.destroy', $transaksi->id_transaksi) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

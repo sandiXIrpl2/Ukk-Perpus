@@ -32,7 +32,7 @@ class FormatController extends Controller
 
         Format::create($request->all());
 
-        return redirect()->route('format.index')->with('success', 'Format berhasil ditambahkan.');
+        return redirect()->route('admin.format.index')->with('success', 'Format berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit format
@@ -54,7 +54,7 @@ class FormatController extends Controller
         $format = Format::findOrFail($id_format);
         $format->update($request->all());
 
-        return redirect()->route('format.index')->with('success', 'Format berhasil diperbarui.');
+        return redirect()->route('admin.format.index')->with('success', 'Format berhasil diperbarui.');
     }
 
     // Menghapus format
@@ -63,6 +63,6 @@ class FormatController extends Controller
         $format = Format::findOrFail($id_format);
         $format->delete();
 
-        return redirect()->route('format.index')->with('success', 'Format berhasil dihapus.');
+        return redirect()->route('admin.format.index')->with('success', 'Format berhasil dihapus.');
     }
 }

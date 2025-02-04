@@ -35,7 +35,7 @@ class DdcController extends Controller
 
         Ddc::create($request->all());
 
-        return redirect()->route('ddc.index')->with('success', 'DDC berhasil ditambahkan.');
+        return redirect()->route('admin.ddc.index')->with('success', 'DDC berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit DDC
@@ -59,7 +59,7 @@ class DdcController extends Controller
         $ddc = Ddc::findOrFail($id_ddc);
         $ddc->update($request->all());
 
-        return redirect()->route('ddc.index')->with('success', 'DDC berhasil diperbarui.');
+        return redirect()->route('admin.ddc.index')->with('success', 'DDC berhasil diperbarui.');
     }
 
     // Menghapus DDC
@@ -68,7 +68,7 @@ class DdcController extends Controller
         $ddc = Ddc::findOrFail($id_ddc);
         $ddc->delete();
 
-        return redirect()->route('ddc.index')->with('success', 'DDC berhasil dihapus.');
+        return redirect()->route('admin.ddc.index')->with('success', 'DDC berhasil dihapus.');
     }
 }
 

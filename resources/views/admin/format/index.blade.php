@@ -29,9 +29,9 @@
                     <td class="border p-2">{{ $format->format }}</td>
                     <td class="border p-2">{{ $format->keterangan }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('format.edit', $format->id_format) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.format.edit', $format->id_format) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('format.destroy', $format->id_format) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.format.destroy', $format->id_format) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

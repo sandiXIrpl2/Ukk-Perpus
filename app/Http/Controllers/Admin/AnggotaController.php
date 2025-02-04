@@ -64,7 +64,7 @@ class AnggotaController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil ditambahkan.');
+        return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit anggota
@@ -121,7 +121,7 @@ class AnggotaController extends Controller
             'password' => $request->password ? Hash::make($request->password) : $anggota->password,
         ]);
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil diperbarui.');
+        return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil diperbarui.');
     }
 
     public function show($id_anggota)
@@ -136,6 +136,6 @@ class AnggotaController extends Controller
         $anggota = Anggota::findOrFail($id_anggota);
         $anggota->delete();
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus.');
+        return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil dihapus.');
     }
 }

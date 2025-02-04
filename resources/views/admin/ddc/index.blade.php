@@ -31,9 +31,9 @@
                     <td class="border p-2">{{ $ddc->rak->rak }}</td>
                     <td class="border p-2">{{ $ddc->keterangan }}</td>
                     <td class="border p-2">
-                        <a href="{{ route('ddc.edit', $ddc->id_ddc) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
+                        <a href="{{ route('admin.ddc.edit', $ddc->id_ddc) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
-                        <form action="{{ route('ddc.destroy', $ddc->id_ddc) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.ddc.destroy', $ddc->id_ddc) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>

@@ -46,7 +46,7 @@ class TransaksiController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
-        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan.');
+        return redirect()->route('admin.transaksi.index')->with('success', 'Transaksi berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit transaksi
@@ -82,7 +82,7 @@ class TransaksiController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
-        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil diperbarui.');
+        return redirect()->route('admin.transaksi.index')->with('success', 'Transaksi berhasil diperbarui.');
     }
 
     // Menghapus transaksi
@@ -91,7 +91,7 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::findOrFail($id);
         $transaksi->delete();
 
-        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus.');
+        return redirect()->route('admin.transaksi.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 
     // Fungsi untuk mengembalikan buku (update tgl_pengembalian dan status)
@@ -103,6 +103,6 @@ class TransaksiController extends Controller
             'fp' => '1', // Status selesai
         ]);
 
-        return redirect()->route('transaksi.index')->with('success', 'Buku berhasil dikembalikan.');
+        return redirect()->route('admin.transaksi.index')->with('success', 'Buku berhasil dikembalikan.');
     }
 }
