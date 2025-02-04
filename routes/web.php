@@ -14,6 +14,11 @@ use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\JenisAnggotaController;
 use App\Http\Controllers\KatalogController;
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('rak', RakController::class);
+});
+
+
 // Route publik
 Route::get('/', function () {
     return view('welcome');
