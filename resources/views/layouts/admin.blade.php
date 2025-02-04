@@ -29,7 +29,7 @@
                     <a href="{{ route('admin.raks.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.raks.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Rak
+                        Rak
                     </a>
                 </li>
 
@@ -38,7 +38,7 @@
                     <a href="{{ route('admin.ddc.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.ddc.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen DDC
+                        DDC
                     </a>
                 </li>
 
@@ -47,7 +47,7 @@
                     <a href="{{ route('admin.format.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.format.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Format
+                        Format
                     </a>
                 </li>
 
@@ -56,7 +56,7 @@
                     <a href="{{ route('admin.penerbit.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.penerbit.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Penerbit
+                        Penerbit
                     </a>
                 </li>
 
@@ -65,7 +65,7 @@
                     <a href="{{ route('admin.pengarang.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.pengarang.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Pengarang
+                        Pengarang
                     </a>
                 </li>
 
@@ -74,7 +74,7 @@
                     <a href="{{ route('admin.jenis_anggota.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.jenis_anggota.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Jenis Anggota
+                        Jenis Anggota
                     </a>
                 </li>
 
@@ -83,7 +83,7 @@
                     <a href="{{ route('admin.pustaka.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.pustaka.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Pustaka
+                        Pustaka
                     </a>
                 </li>
 
@@ -92,7 +92,7 @@
                     <a href="{{ route('admin.anggota.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.anggota.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Anggota
+                        Anggota
                     </a>
                 </li>
 
@@ -101,7 +101,7 @@
                     <a href="{{ route('admin.transaksi.index') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
                         {{ request()->routeIs('admin.transaksi.*') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
-                        Manajemen Transaksi
+                        Transaksi
                     </a>
                 </li>
 
