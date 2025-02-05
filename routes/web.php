@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\PengarangController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\JenisAnggotaController;
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\Auth\AnggotaAuthController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('rak', RakController::class);
@@ -68,4 +70,22 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
             'transaksi' => TransaksiController::class,
         ]);
     });
+
+    Route::put('/admin/transaksi/{id}/return', [TransaksiController::class, 'returnBook'])->name('admin.transaksi.return');
 });
+
+// Routes untuk peminjaman (perlu login sebagai anggota)
+Route::middleware(['auth:anggota'])->group(function () {
+    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+    Route::get('/peminjaman/create/{id_pustaka}', [PeminjamanController::class, 'create'])->name('peminjaman.create');
+    Route::post('/peminjaman/{id_pustaka}', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+    Route::get('/peminjaman/{id_transaksi}', [PeminjamanController::class, 'show'])->name('peminjaman.show');
+    Route::put('/peminjaman/{id}/return', [PeminjamanController::class, 'returnBook'])->name('peminjaman.return');
+});
+
+// Routes untuk autentikasi anggota
+Route::get('/anggota/login', [AnggotaAuthController::class, 'showLoginForm'])->name('anggota.login');
+Route::post('/anggota/login', [AnggotaAuthController::class, 'login']);
+Route::post('/anggota/logout', [AnggotaAuthController::class, 'logout'])->name('anggota.logout');
+Route::get('/anggota/register', [AnggotaAuthController::class, 'showRegistrationForm'])->name('anggota.register');
+Route::post('/anggota/register', [AnggotaAuthController::class, 'register']);

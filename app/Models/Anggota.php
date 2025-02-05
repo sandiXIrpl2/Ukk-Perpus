@@ -34,6 +34,11 @@ class Anggota extends Authenticatable
         'password',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     public function jenisAnggota()
     {
         return $this->belongsTo(JenisAnggota::class, 'id_jenis_anggota');

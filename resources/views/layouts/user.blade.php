@@ -22,18 +22,24 @@
                         <a href="{{ route('dashboard') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Beranda</a>
                         <a href="{{ route('katalog') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Katalog</a>
                         <a href="{{ route('about') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Tentang</a>
+                        @auth('anggota')
+                            <a href="{{ route('peminjaman.index') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Peminjaman</a>
+                        @endauth
                     </div>
                 </div>
                 <!-- Secondary Navbar items -->
                 <div class="hidden md:flex items-center space-x-3">
-                    @auth
+                    @auth('anggota')
                         <div class="flex items-center space-x-4">
-                            <span class="text-gray-500">{{ Auth::user()->name }}</span>
-                            <form method="POST" action="{{ route('logout') }}">
+                            <span class="text-gray-500">{{ Auth::guard('anggota')->user()->nama_anggota }}</span>
+                            <form method="POST" action="{{ route('anggota.logout') }}">
                                 @csrf
                                 <button type="submit" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-blue-500 hover:text-white transition duration-300">Logout</button>
                             </form>
                         </div>
+                    @else
+                        <a href="{{ route('anggota.login') }}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-blue-500 hover:text-white transition duration-300">Login</a>
+                        <a href="{{ route('anggota.register') }}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-blue-500 hover:text-white transition duration-300">Register</a>
                     @endauth
                 </div>
             </div>

@@ -33,20 +33,50 @@ class TransaksiController extends Controller
             'id_pustaka' => 'required|exists:tbl_pustaka,id_pustaka',
             'id_anggota' => 'required|exists:tbl_anggota,id_anggota',
             'tgl_pinjam' => 'required|date',
-            'tgl_kembali' => 'required|date',
-            'keterangan' => 'required|string|max:50',
+            'tgl_kembali' => 'required|date|after:tgl_pinjam',
+            'keterangan' => 'nullable|string|max:50',
         ]);
 
+        // Generate ID Transaksi (format: TRX-YYYYMMDD-XXX)
+        $today = now()->format('Ymd');
+        $lastTransaction = Transaksi::where('id_transaksi', 'like', "TRX-{$today}%")
+            ->orderBy('id_transaksi', 'desc')
+            ->first();
+        
+        if ($lastTransaction) {
+            $lastNumber = intval(substr($lastTransaction->id_transaksi, -3));
+            $newNumber = str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+        } else {
+            $newNumber = '001';
+        }
+        
+        $id_transaksi = "TRX-{$today}-{$newNumber}";
+
+        // Cek ketersediaan buku
+        $pustaka = Pustaka::findOrFail($request->id_pustaka);
+        if ($pustaka->fp == '1') {
+            return redirect()->back()->with('error', 'Buku sedang tidak tersedia untuk dipinjam.');
+        }
+
+        // Buat transaksi baru
         Transaksi::create([
+            'id_transaksi' => $id_transaksi,
             'id_pustaka' => $request->id_pustaka,
             'id_anggota' => $request->id_anggota,
             'tgl_pinjam' => $request->tgl_pinjam,
             'tgl_kembali' => $request->tgl_kembali,
-            'fp' => '0', // Status pinjam
+            'fp' => '0', // Status peminjaman aktif
             'keterangan' => $request->keterangan,
         ]);
 
-        return redirect()->route('admin.transaksi.index')->with('success', 'Transaksi berhasil ditambahkan.');
+        // Update status buku
+        $pustaka->update([
+            'fp' => '1', // Buku sedang dipinjam
+            'jml_pinjam' => $pustaka->jml_pinjam + 1,
+        ]);
+
+        return redirect()->route('admin.transaksi.index')
+            ->with('success', 'Transaksi peminjaman berhasil dibuat.');
     }
 
     // Menampilkan form untuk mengedit transaksi
@@ -98,11 +128,26 @@ class TransaksiController extends Controller
     public function returnBook($id)
     {
         $transaksi = Transaksi::findOrFail($id);
+        
+        // Hitung denda jika terlambat
+        $denda = 0;
+        if (now() > $transaksi->tgl_kembali) {
+            $daysLate = now()->diffInDays($transaksi->tgl_kembali);
+            $denda = $daysLate * $transaksi->pustaka->denda_terlambat;
+        }
+
         $transaksi->update([
             'tgl_pengembalian' => now(),
             'fp' => '1', // Status selesai
+            'keterangan' => $denda > 0 ? "Denda keterlambatan: Rp " . number_format($denda, 0, ',', '.') : null,
         ]);
 
-        return redirect()->route('admin.transaksi.index')->with('success', 'Buku berhasil dikembalikan.');
+        // Update status buku
+        $transaksi->pustaka->update([
+            'fp' => '0', // Buku tersedia kembali
+        ]);
+
+        return redirect()->route('admin.transaksi.index')
+            ->with('success', 'Buku berhasil dikembalikan.' . ($denda > 0 ? " Denda: Rp " . number_format($denda, 0, ',', '.') : ''));
     }
 }

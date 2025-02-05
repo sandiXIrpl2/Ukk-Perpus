@@ -10,7 +10,11 @@
             <label for="id_pustaka" class="block text-gray-700">Buku</label>
             <select name="id_pustaka" id="id_pustaka" required class="w-full p-2 border rounded">
                 @foreach ($pustakas as $pustaka)
-                    <option value="{{ $pustaka->id_pustaka }}">{{ $pustaka->judul_pustaka }}</option>
+                    @if($pustaka->fp == '0')
+                        <option value="{{ $pustaka->id_pustaka }}">
+                            {{ $pustaka->judul_pustaka }} ({{ $pustaka->kode_pustaka }})
+                        </option>
+                    @endif
                 @endforeach
             </select>
         </div>
@@ -38,6 +42,12 @@
             <label for="keterangan" class="block text-gray-700">Keterangan</label>
             <input type="text" name="keterangan" id="keterangan" class="w-full p-2 border rounded" value="{{ old('keterangan') }}">
         </div>
+
+        @if(session('error'))
+            <div class="mb-4 text-red-500">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <div class="mb-4">
             <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Simpan</button>

@@ -55,7 +55,11 @@
 
                     <div>
                         <span class="font-semibold">Status:</span>
-                        <span class="text-green-500">{{ $pustaka->status ?? 'Tersedia' }}</span>
+                        @if($pustaka->fp == '0')
+                            <span class="text-green-500">Tersedia</span>
+                        @else
+                            <span class="text-red-500">Sedang Dipinjam</span>
+                        @endif
                     </div>
 
                     @if($pustaka->deskripsi)
@@ -64,16 +68,29 @@
                             <p class="text-gray-700">{{ $pustaka->deskripsi }}</p>
                         </div>
                     @endif
-                </div>
 
-                @if($pustaka->status === 'Tersedia')
+                    <!-- Tombol Peminjaman -->
                     <div class="mt-6">
-                        <a href="{{ route('peminjaman.create', $pustaka->id_pustaka) }}" 
-                            class="inline-block bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
-                            Pinjam Buku
-                        </a>
+                        @auth('anggota')
+                            @if($pustaka->fp == '0')
+                                <a href="{{ route('peminjaman.create', $pustaka->id_pustaka) }}" 
+                                    class="inline-block bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
+                                    Pinjam Buku
+                                </a>
+                            @else
+                                <button disabled 
+                                    class="inline-block bg-gray-400 text-white py-2 px-6 rounded-md cursor-not-allowed">
+                                    Buku Sedang Dipinjam
+                                </button>
+                            @endif
+                        @else
+                            <a href="{{ route('anggota.login') }}" 
+                                class="inline-block bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
+                                Login untuk Meminjam
+                            </a>
+                        @endauth
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
