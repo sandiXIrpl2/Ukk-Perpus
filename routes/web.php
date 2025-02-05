@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\JenisAnggotaController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\Auth\AnggotaAuthController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('rak', RakController::class);
@@ -49,7 +50,7 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     // Admin Home
-    Route::get('/admin', [HomeController::class, 'adminHome'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
     
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

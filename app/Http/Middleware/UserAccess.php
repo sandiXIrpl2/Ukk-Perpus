@@ -26,7 +26,7 @@ class UserAccess
         
         // Redirect berdasarkan tipe user
         if (auth()->user()->type == 1) {
-            return redirect()->route('admin');
+            return redirect()->route('admin.home')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         
         return redirect()->route('home')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');

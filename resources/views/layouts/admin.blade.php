@@ -17,9 +17,9 @@
             <ul>
                 <!-- Dashboard Link -->
                 <li class="mb-4">
-                    <a href="{{ route('admin') }}" 
+                    <a href="{{ route('admin.home') }}" 
                         class="text-lg text-white hover:text-blue-300 px-4 py-2 rounded-md 
-                        {{ request()->routeIs('admin') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
+                        {{ request()->routeIs('admin.home') ? 'bg-blue-600' : 'hover:bg-blue-500' }}">
                         Dashboard
                     </a>
                 </li>
