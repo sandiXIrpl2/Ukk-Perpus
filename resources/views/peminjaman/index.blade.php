@@ -19,6 +19,8 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tgl Pinjam</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tgl Kembali</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Keterlambatan</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Denda</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
                 </tr>
             </thead>
@@ -34,6 +36,20 @@
                                 <span class="text-yellow-500">Dipinjam</span>
                             @else
                                 <span class="text-green-500">Selesai</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="{{ str_contains($transaksi->getStatusKeterlambatan(), 'Terlambat') ? 'text-red-500' : 'text-green-500' }}">
+                                {{ $transaksi->getStatusKeterlambatan() }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            @if($transaksi->hitungDenda() > 0)
+                                <span class="text-red-500">
+                                    Rp {{ number_format($transaksi->hitungDenda(), 0, ',', '.') }}
+                                </span>
+                            @else
+                                <span class="text-green-500">-</span>
                             @endif
                         </td>
                         <td class="px-6 py-4">

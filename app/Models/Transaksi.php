@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Transaksi extends Model
 {
@@ -34,5 +35,51 @@ class Transaksi extends Model
     public function anggota()
     {
         return $this->belongsTo(Anggota::class, 'id_anggota');
+    }
+
+    // Fungsi untuk menghitung denda
+    public function hitungDenda()
+    {
+        // Jika sudah dikembalikan, hitung berdasarkan tanggal pengembalian aktual
+        $tanggalAkhir = $this->tgl_pengembalian ? Carbon::parse($this->tgl_pengembalian) : Carbon::now();
+        $batasWaktu = Carbon::parse($this->tgl_kembali);
+        
+        // Hitung selisih hari (bulatkan ke atas)
+        $selisihHari = max(0, ceil($batasWaktu->floatDiffInDays($tanggalAkhir, false)));
+        
+        // Hitung denda (denda per hari * selisih hari)
+        if ($tanggalAkhir > $batasWaktu) {
+            $dendaPerHari = $this->pustaka->denda_terlambat ?? 1000; // default 1000 jika tidak diset
+            $totalDenda = $selisihHari * $dendaPerHari;
+            return $totalDenda;
+        }
+        
+        return 0;
+    }
+
+    // Fungsi untuk mendapatkan status keterlambatan
+    public function getStatusKeterlambatan()
+    {
+        if ($this->fp == '1') {
+            // Jika sudah dikembalikan
+            $tanggalKembali = Carbon::parse($this->tgl_pengembalian);
+            $batasWaktu = Carbon::parse($this->tgl_kembali);
+            
+            if ($tanggalKembali > $batasWaktu) {
+                $selisihHari = ceil($batasWaktu->floatDiffInDays($tanggalKembali, false));
+                return "Terlambat {$selisihHari} hari";
+            }
+            return "Tepat Waktu";
+        } else {
+            // Jika belum dikembalikan
+            $sekarang = Carbon::now();
+            $batasWaktu = Carbon::parse($this->tgl_kembali);
+            
+            if ($sekarang > $batasWaktu) {
+                $selisihHari = ceil($batasWaktu->floatDiffInDays($sekarang, false));
+                return "Terlambat {$selisihHari} hari";
+            }
+            return "Masih Dalam Masa Peminjaman";
+        }
     }
 }
