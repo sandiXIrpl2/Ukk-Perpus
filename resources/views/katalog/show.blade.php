@@ -70,24 +70,28 @@
                     @endif
 
                     <!-- Tombol Peminjaman -->
-                    <div class="mt-6">
-                        @auth('anggota')
+                    <div class="mt-4">
+                        <p class="text-lg mb-2">
+                            Status: 
                             @if($pustaka->fp == '0')
+                                <span class="text-green-500">Tersedia</span>
+                            @else
+                                <span class="text-red-500">Sedang Dipinjam</span>
+                            @endif
+                        </p>
+
+                        @auth('anggota')
+                            @if($canBorrow)
                                 <a href="{{ route('peminjaman.create', $pustaka->id_pustaka) }}" 
-                                    class="inline-block bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
+                                   class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                                     Pinjam Buku
                                 </a>
                             @else
                                 <button disabled 
-                                    class="inline-block bg-gray-400 text-white py-2 px-6 rounded-md cursor-not-allowed">
+                                        class="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
                                     Buku Sedang Dipinjam
                                 </button>
                             @endif
-                        @else
-                            <a href="{{ route('anggota.login') }}" 
-                                class="inline-block bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
-                                Login untuk Meminjam
-                            </a>
                         @endauth
                     </div>
                 </div>

@@ -24,6 +24,7 @@
                         <a href="{{ route('about') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Tentang</a>
                         @auth('anggota')
                             <a href="{{ route('peminjaman.index') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Peminjaman</a>
+                            <a href="{{ route('pengembalian.index') }}" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Pengembalian</a>
                         @endauth
                     </div>
                 </div>

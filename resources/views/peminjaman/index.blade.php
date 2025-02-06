@@ -21,7 +21,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Keterlambatan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Denda</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Keterangan</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -36,6 +36,12 @@
                                 <span class="text-yellow-500">Dipinjam</span>
                             @else
                                 <span class="text-green-500">Selesai</span>
+                                @if($transaksi->tgl_pengembalian)
+                                    <br>
+                                    <span class="text-sm text-gray-500">
+                                        Dikembalikan: {{ $transaksi->tgl_pengembalian }}
+                                    </span>
+                                @endif
                             @endif
                         </td>
                         <td class="px-6 py-4">
@@ -53,12 +59,16 @@
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            @if($transaksi->fp == '0')
-                                <form action="{{ route('peminjaman.return', $transaksi->id_transaksi) }}" method="POST" class="inline">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="text-blue-500 hover:text-blue-700">Kembalikan Buku</button>
-                                </form>
+                            @if($transaksi->fp == '1')
+                                @if($transaksi->kondisi_buku && $transaksi->kondisi_buku != 'Baik')
+                                    <span class="text-red-500">Kondisi: {{ $transaksi->kondisi_buku }}</span>
+                                    <br>
+                                @endif
+                                @if($transaksi->keterangan)
+                                    <span class="text-sm text-gray-600">{{ $transaksi->keterangan }}</span>
+                                @endif
+                            @else
+                                <span class="text-yellow-500">Belum dikembalikan</span>
                             @endif
                         </td>
                     </tr>

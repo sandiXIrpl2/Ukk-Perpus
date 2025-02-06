@@ -38,6 +38,8 @@ class KatalogController extends Controller
     public function show($id)
     {
         $pustaka = Pustaka::with(['pengarang', 'penerbit', 'ddc', 'format'])->findOrFail($id);
-        return view('katalog.show', compact('pustaka'));
+        $canBorrow = $pustaka->fp == '0'; // Hanya bisa dipinjam jika status tersedia
+
+        return view('katalog.show', compact('pustaka', 'canBorrow'));
     }
 } 

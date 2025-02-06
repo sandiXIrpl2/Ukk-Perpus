@@ -16,6 +16,7 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\Auth\AnggotaAuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PengembalianController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('rak', RakController::class);
@@ -90,3 +91,11 @@ Route::post('/anggota/login', [AnggotaAuthController::class, 'login']);
 Route::post('/anggota/logout', [AnggotaAuthController::class, 'logout'])->name('anggota.logout');
 Route::get('/anggota/register', [AnggotaAuthController::class, 'showRegistrationForm'])->name('anggota.register');
 Route::post('/anggota/register', [AnggotaAuthController::class, 'register']);
+
+// Routes untuk pengembalian buku (user)
+Route::middleware(['auth:anggota'])->group(function () {
+    Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian.index');
+    Route::get('/pengembalian/create', [PengembalianController::class, 'create'])->name('pengembalian.create');
+    Route::post('/pengembalian', [PengembalianController::class, 'store'])->name('pengembalian.store');
+    Route::put('/pengembalian/{id}/return', [PengembalianController::class, 'return'])->name('pengembalian.return');
+});

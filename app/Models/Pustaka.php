@@ -57,4 +57,14 @@ class Pustaka extends Model
     {
         return $this->belongsTo(Pengarang::class, 'id_pengarang');
     }
+
+    public function isAvailable()
+    {
+        return $this->fp === '0';
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->fp === '0' ? 'Tersedia' : 'Sedang Dipinjam';
+    }
 }

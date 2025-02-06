@@ -3,6 +3,9 @@
 @section('header', 'Manajemen Transaksi')
 
 @section('content')
+<div class="mb-4">
+        <a href="{{ route('admin.transaksi.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Transaksi Baru</a>
+    </div>
 
     @if(session('success'))
         <div class="mb-4 text-green-500">
@@ -38,13 +41,19 @@
                         @endif
                     </td>
                     <td class="border p-2">
+                        <a href="{{ route('admin.transaksi.show', $transaksi->id_transaksi) }}" 
+                           class="text-indigo-500 hover:text-indigo-700 mr-2">Detail</a>
+
                         @if($transaksi->fp == '0')
                             <form action="{{ route('admin.transaksi.return', $transaksi->id_transaksi) }}" method="POST" class="inline">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="text-green-500 hover:text-green-700">Kembalikan</button>
+                                <button type="submit" class="text-green-500 hover:text-green-700 mr-2">Kembalikan</button>
                             </form>
                         @endif
+                        
+                        <a href="{{ route('admin.transaksi.edit', $transaksi->id_transaksi) }}" 
+                           class="text-blue-500 hover:text-blue-700">Edit</a>
                     </td>
                 </tr>
             @endforeach

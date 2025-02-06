@@ -37,6 +37,16 @@ class Transaksi extends Model
         return $this->belongsTo(Anggota::class, 'id_anggota');
     }
 
+    public function dendas()
+    {
+        return $this->hasMany(Denda::class, 'id_transaksi', 'id_transaksi');
+    }
+
+    public function totalDenda()
+    {
+        return $this->dendas->sum('jumlah_denda');
+    }
+
     // Fungsi untuk menghitung denda
     public function hitungDenda()
     {

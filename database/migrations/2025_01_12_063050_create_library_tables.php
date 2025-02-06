@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateLibraryTables extends Migration
 {
@@ -107,7 +108,7 @@ class CreateLibraryTables extends Migration
             $table->longText('gambar');
             $table->integer('harga_buku');
             $table->string('kondisi_buku', 15);
-            $table->enum('fp', ['0', '1']);
+            $table->enum('fp', ['0', '1'])->default('0');
             $table->tinyInteger('jml_pinjam');
             $table->integer('denda_terlambat');
             $table->integer('denda_hilang');
@@ -154,6 +155,18 @@ class CreateLibraryTables extends Migration
             $table->foreign('id_anggota')->references('id_anggota')->on('tbl_anggota');
             $table->primary('id_transaksi');
         });
+
+        // Reset semua status buku menjadi tersedia (fp = '0')
+        DB::statement("UPDATE tbl_pustaka SET fp = '0'");
+
+        // Update status buku yang sedang dipinjam (berdasarkan transaksi aktif)
+        DB::statement("UPDATE tbl_pustaka 
+        SET fp = '1'
+        WHERE id_pustaka IN (
+            SELECT id_pustaka 
+            FROM tbl_transaksi 
+            WHERE fp = '0'
+        )");
     }
 
     public function down()

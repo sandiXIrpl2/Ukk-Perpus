@@ -10,6 +10,7 @@ use App\Models\Pengarang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Transaksi;
 
 class PustakaController extends Controller
 {
@@ -49,7 +50,7 @@ class PustakaController extends Controller
             'abstraksi' => 'required',
             'harga_buku' => 'nullable|numeric',
             'kondisi_buku' => 'nullable|string|max:15',
-            'fp' => 'required',
+            'fp' => 'required|in:0,1',
             'jml_pinjam' => 'required',
             'denda_terlambat' => 'required',
             'denda_hilang' => 'required',
@@ -105,7 +106,7 @@ class PustakaController extends Controller
             'abstraksi' => 'required',
             'harga_buku' => 'nullable|numeric',
             'kondisi_buku' => 'nullable|string|max:15',
-            'fp' => 'required',
+            'fp' => 'required|in:0,1',
             'jml_pinjam' => 'required',
             'denda_terlambat' => 'required',
             'denda_hilang' => 'required',
@@ -114,6 +115,28 @@ class PustakaController extends Controller
         // Upload gambar jika ada
         if ($request->hasFile('gambar')) {
             $validatedData['gambar'] = $request->file('gambar')->store('pustaka', 'public');
+        }
+
+        // Jika status diubah menjadi dipinjam, cek apakah ada transaksi aktif
+        if ($request->fp == '1' && $pustaka->fp == '0') {
+            $activeTransaction = Transaksi::where('id_pustaka', $id_pustaka)
+                ->where('fp', '0')
+                ->exists();
+            
+            if ($activeTransaction) {
+                return back()->with('error', 'Tidak dapat mengubah status menjadi dipinjam karena buku sedang dalam transaksi peminjaman.');
+            }
+        }
+        
+        // Jika status diubah menjadi tersedia, cek apakah ada transaksi aktif
+        if ($request->fp == '0' && $pustaka->fp == '1') {
+            $activeTransaction = Transaksi::where('id_pustaka', $id_pustaka)
+                ->where('fp', '0')
+                ->exists();
+            
+            if ($activeTransaction) {
+                return back()->with('error', 'Tidak dapat mengubah status menjadi tersedia karena buku sedang dipinjam.');
+            }
         }
 
         $pustaka->update($validatedData);

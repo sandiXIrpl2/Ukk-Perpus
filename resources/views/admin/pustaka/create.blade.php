@@ -124,10 +124,11 @@
         </div>
 
         <div class="mb-4">
-            <label for="fp" class="block">Flag</label>
-            <select name="fp" id="fp" class="w-full p-2 border rounded">
-                <option value="0">N</option>
-                <option value="1">Y</option>
+            <label for="fp" class="block text-gray-700 font-medium mb-2">Status Buku</label>
+            <select name="fp" id="fp" required 
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="0">Tersedia</option>
+                <option value="1">Dipinjam</option>
             </select>
         </div>
 

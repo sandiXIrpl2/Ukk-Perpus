@@ -150,4 +150,12 @@ class TransaksiController extends Controller
         return redirect()->route('admin.transaksi.index')
             ->with('success', 'Buku berhasil dikembalikan.' . ($denda > 0 ? " Denda: Rp " . number_format($denda, 0, ',', '.') : ''));
     }
+
+    public function show($id)
+    {
+        $transaksi = Transaksi::with(['anggota.jenisAnggota', 'pustaka'])
+            ->findOrFail($id);
+        
+        return view('admin.transaksi.show', compact('transaksi'));
+    }
 }

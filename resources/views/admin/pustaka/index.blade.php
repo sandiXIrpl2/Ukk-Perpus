@@ -22,6 +22,7 @@
                 <th class="border p-2">Tahun Terbit</th>
                 <th class="border p-2">Kondisi</th>
                 <th class="border p-2">Harga</th>
+                <th class="border p-2">Status</th>
                 <th class="border p-2">Aksi</th>
             </tr>
         </thead>
@@ -34,6 +35,13 @@
                     <td class="border p-2">{{ $pustaka->tahun_terbit }}</td>
                     <td class="border p-2">{{ $pustaka->kondisi_buku }}</td>
                     <td class="border p-2">{{ number_format($pustaka->harga_buku, 0, ',', '.') }}</td>
+                    <td class="border p-2">
+                        @if($pustaka->fp == '0')
+                            <span class="text-green-500">Tersedia</span>
+                        @else
+                            <span class="text-red-500">Dipinjam</span>
+                        @endif
+                    </td>
                     <td class="border p-2">
                         <a href="{{ route('admin.pustaka.edit', $pustaka->id_pustaka) }}" class="text-yellow-500 hover:text-yellow-700">Edit</a>
                         |
