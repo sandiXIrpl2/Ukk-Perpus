@@ -33,7 +33,7 @@
         </form>
     </div>
 
-    <!-- Books Grid -->
+   <!-- Books Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($pustakas as $pustaka)
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
